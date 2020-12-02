@@ -29,7 +29,8 @@ namespace MyImpenetrableSite
             SqlDataReader sqlDataReader = cmd.ExecuteReader();
             if (!sqlDataReader.HasRows)
             {
-                lblLoginError.Text = "The username you entered does not exist. Please try again.";
+               // lblLoginError.Text = "The username you entered does not exist. Please try again.";
+                lblLoginError.Text = "Please try again.";
                 conn.Close();
             }
             else
@@ -42,7 +43,8 @@ namespace MyImpenetrableSite
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (!reader.HasRows)
                 {
-                    lblLoginError.Text = "The password you entered is not correct. Please try again.";
+                    //lblLoginError.Text = "The password you entered is not correct. Please try again.";
+                    lblLoginError.Text = "Please try again.";
                 }
                 else
                 {
@@ -63,7 +65,8 @@ namespace MyImpenetrableSite
 
                         if (statusId == 2)
                         {
-                            lblLoginError.Text = "Your account is inactive. Please contact the administrator to deactivate your account first.";
+                            //lblLoginError.Text = "Your account is inactive. Please contact the administrator to deactivate your account first.";
+                            lblLoginError.Text = "Please contact the administrator.";
                         }
                         else
                         {
