@@ -22,8 +22,11 @@ namespace MyImpenetrableSite
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["MISConnectionString"].ToString());
 
             // Create a SQL command object to query username
-            string usernameQuery = "SELECT * FROM Users WHERE Username = '" + txtUsername.Text.Trim() + "'";
+            // string usernameQuery = "SELECT * FROM Users WHERE Username = '" + txtUsername.Text.Trim() + "'";
+            string usernameQuery = "SELECT * FROM Users WHERE Username = @Username";//Gina's fix
             SqlCommand cmd = new SqlCommand(usernameQuery, conn);
+            SqlParameter param = new SqlParameter("@Username", txtUsername.Text.Trim());//Gina's fix
+            cmd.Parameters.Add(param);//Gina's fix
 
             conn.Open();
             SqlDataReader sqlDataReader = cmd.ExecuteReader();
