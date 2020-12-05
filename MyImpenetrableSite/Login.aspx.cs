@@ -39,9 +39,15 @@ namespace MyImpenetrableSite
             else
             {
                 conn.Close();
-                string strQuery = "SELECT * FROM Users WHERE Username = '" + txtUsername.Text.Trim()
-                    + "' AND Password = '" + txtPassword.Text.Trim() + "'";
+              //  string strQuery = "SELECT * FROM Users WHERE Username = '" + txtUsername.Text.Trim() + "' AND Password = '" + txtPassword.Text.Trim() + "'";
+                string strQuery = "SELECT * FROM Users WHERE Username = @Username AND Password = @Password";//Gina's fix
                 cmd = new SqlCommand(strQuery, conn);
+                SqlParameter[] paramArray = new SqlParameter[2];//Learned online how to parameterize queries
+                paramArray[0] = new SqlParameter("@UserID", txtUsername.Text.Trim());
+                paramArray[1] = new SqlParameter("@pwd", txtPassword.Text.Trim());
+                cmd.Parameters.Add(paramArray[0]);
+                cmd.Parameters.Add(paramArray[1]);
+
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (!reader.HasRows)
