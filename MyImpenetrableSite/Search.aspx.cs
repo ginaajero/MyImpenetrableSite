@@ -14,9 +14,8 @@ namespace MyImpenetrableSite
 
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            lblSearchTerms.Text = "You searched for: " + txtSearchTerms.Text;
-        }
+        protected void btnSearch_Click(object sender, EventArgs e) =>
+            //  lblSearchTerms.Text = "You searched for: " + txtSearchTerms.Text;
+            lblSearchTerms.Text = $"You searched for: {txtSearchTerms.Text}";
     }
 }
